@@ -78,7 +78,7 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
         }
 
         note = await Notes.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true });
-        res.json({ note });
+        res.json(note);
     } 
     catch (err) {
         console.error(err.message);

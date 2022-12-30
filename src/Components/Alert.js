@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Alert = () => {
+const Alert = (props) => {
     return (
         <div>
-            <div className="alert alert-primary" role="alert">
-                This is a primary alert—check it out!
-            </div>
+            {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissable fade show`} role="alert">
+               {props.alert.msg}
+            </div>}
         </div>
     )
 }

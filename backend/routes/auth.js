@@ -16,15 +16,17 @@ router.post('/createuser', [
   body('password', 'Enter a valid password').isLength({ min: 5 })
 
 ], async (req, res) => {
+
+  let success=false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({success, errors: errors.array() });
   };
 
   try {
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      return res.status(400).json({ error: "Sorry a user alrady exist with this email" });
+      return res.status(400).json({ success,error: "Sorry a user alrady exist with this email" });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -44,11 +46,11 @@ router.post('/createuser', [
     }
 
     const authToken = jwt.sign(data, jwt_secret);
+    success=true;
 
 
 
-
-    res.json({ authToken });
+    res.json({ success,authToken });
 
   }
   catch (err) {
@@ -64,7 +66,7 @@ router.post('/login', [
   body('password', 'Password cannot be blank').exists()
 
 ], async (req, res) => {
-
+  let success=false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -76,12 +78,12 @@ router.post('/login', [
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ error: "Enter correct credentials" })
+      return res.status(400).json({ success,error: "Enter correct credentials" })
     }
 
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
-      return res.status(400).json({ error: "Enter correct credentials" })
+      return res.status(400).json({success, error: "Enter correct credentials" })
     }
 
     const data = {
@@ -89,9 +91,9 @@ router.post('/login', [
         id: user.id
       }
     }
-
+    success=true;
     const authToken = jwt.sign(data, jwt_secret);
-    res.json({ authToken });
+    res.json({ success,authToken });
 
   } catch (error) {
     console.error(error.message);

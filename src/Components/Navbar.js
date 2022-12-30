@@ -6,7 +6,7 @@ const Navbar = () => {
     let location = useLocation();
 
     useEffect(() => {
-        console.log(location.pathname);
+        // console.log(location.pathname);
     }, [location]);
     return (
         <div>
@@ -27,8 +27,8 @@ const Navbar = () => {
 
                         </ul>
                         <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        <Link to='/login'><button type="button" className="btn  btn-outline-primary mx-2">Login</button></Link>
+                        <Link to='/signup'><button type="button" className="btn  btn-outline-primary mx-2">Signup</button></Link>
                         </form>
                     </div>
                 </div>
