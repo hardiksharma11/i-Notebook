@@ -20,9 +20,11 @@ const Login = (props) => {
         console.log(json);
         if(json.success){
             // Save the auth token in local storage
-            localStorage.setItem('token',json.authtoken);
-            navigate('/');
+            localStorage.setItem('token',json.authToken);
+            // console.log(localStorage.getItem('token'))
+            // console.log(json.authtoken)
             props.showAlert("Successfully logged in",'success')
+            navigate('/');
         }
         else{
             // alert("Invalid credentials");

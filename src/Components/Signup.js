@@ -19,6 +19,7 @@ const Signup = (props) => {
     console.log(json);
     if (json.success) {
       // Save the auth token in local storage
+      localStorage.setItem('token',json.authToken);
       navigate('/');
       props.showAlert("Successfully Registered",'success')
     }
