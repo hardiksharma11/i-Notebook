@@ -6,8 +6,6 @@ iNotebook is a full-stack web application built with the MERN (MongoDB, Express.
 
 - **User Authentication**: iNotebook implements secure user authentication using JWT (JSON Web Tokens) and bcrypt. Users can create accounts, log in securely, and manage their notes.
 - **Note Management**: Users can perform CRUD operations on their notes, including creating new notes, viewing existing notes, updating note content, and deleting notes.
-- **Real-Time Collaboration**: iNotebook enables real-time collaboration by allowing users to share their notes with other users. Shared notes can be simultaneously edited, providing a collaborative environment.
-- **Markdown Support**: The application integrates markdown support, allowing users to format their notes using markdown syntax for rich text formatting.
 - **Responsive Design**: iNotebook is built with a responsive design, ensuring optimal user experience across different devices and screen sizes.
 - **Bootstrap Framework**: The application utilizes the Bootstrap framework for a visually appealing and user-friendly interface.
 
